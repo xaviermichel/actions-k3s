@@ -16,7 +16,7 @@ async function run() {
     "-v","/tmp/output:/tmp/output","-p","6443:6443","-p","80:80","-p","443:443","-p","8080:8080",
     "rancher/k3s:"+version,"server"]);
 
-    await wait(parseInt(10000));
+    await wait(parseInt(30000));
 
     if (process.env.DOCKER_HOST) {
       const kubeconfig = await exec.getExecOutput('docker', ["exec", `k3s-${version}`, "cat", kubeconfig_location]);
